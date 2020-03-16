@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar repositorios</title>
+</head>
+
+<body>
+    <div class="columns">
+        <div id="app" class="column is-two-fifths">
+            <h1 class="title">Digite algum USERNAME do github e veja seus repositorios:</h1>
+            <div class="field">                                
+                <ul>
+
+                </ul>
+                <div class="control">
+                    <input type="text" class="input">
+                </div>  
+
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success">Buscar</button>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="column">
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let listElement = document.querySelector('#app ul')
+        let inputElement = document.querySelector('#app input');
+        let buttonElement = document.querySelector('#app button');
+
+        //FUNÇÃO PARA LISTAR REPOSITORIOS DO GIT de acordo com USERNAME
+
+       buttonElement.onclick = function listarRepositorio() {
+            listElement.innerHTML = '';
+            
+            axios.get('https://api.github.com/users/' +  inputElement.value +'/repos')
+                .then(function (response) {
+
+                    let todos = response.data
+
+                    for(todo of todos){
+                        console.log(todo.name)
+                        let todoElement = document.createElement('li');
+                        let todoText = document.createTextNode(todo.name);
+
+                        todoElement.appendChild(todoText)
+                        listElement.appendChild(todoElement)
+
+                    }
+
+                })
+                .catch(function (error) {
+                    console.warn('Usuario não encontrado')
+                    alert('usuario não encontrado!')
+
+                });
+
+                inputElement.value = '';
+        };
+
+    </script>
+</body>
+
+</html>
