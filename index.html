@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
@@ -8,70 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar repositorios</title>
 </head>
-
 <body>
-    <div class="columns">
-        <div id="app" class="column is-two-fifths">
-            <h1 class="title">Digite algum USERNAME do github e veja seus repositorios:</h1>
-            <div class="field">                                
-                <ul>
-
-                </ul>
+    <section class="hero">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Buscar repositorios
+            </h1>
+            <h2 class="subtitle">
+              GitHub
+            </h2>
+          </div>
+        </div>
+      </section>
+    <div class="container">
+    <div id="app" class="columns">
+        <div  class="column is-two-fifths">
+            <label class="label">Informe um usuario do GitHub:</label>
+            <div class="field has-addons">
+               
                 <div class="control">
-                    <input type="text" class="input">
-                </div>  
-
-            </div>
-            <div class="field">
-                <div class="control">
-                    <button class="button is-success">Buscar</button>
+                    <input type="text" class="input is-success">                  
+                    
                 </div>
+                <div class="control">
+                    <a class="button is-success">Buscar</a>
+                    <a class="button is-danger" onclick="limpar()">Limpar</a>
+                </div>
+                
             </div>
-            
 
         </div>
         <div class="column">
-            
+            <label class="label">Repositorios:</label>
+            <ul>
+
+            </ul>
         </div>
     </div>
-
+    
+</div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        let listElement = document.querySelector('#app ul')
-        let inputElement = document.querySelector('#app input');
-        let buttonElement = document.querySelector('#app button');
-
-        //FUNÇÃO PARA LISTAR REPOSITORIOS DO GIT de acordo com USERNAME
-
-       buttonElement.onclick = function listarRepositorio() {
-            listElement.innerHTML = '';
-            
-            axios.get('https://api.github.com/users/' +  inputElement.value +'/repos')
-                .then(function (response) {
-
-                    let todos = response.data
-
-                    for(todo of todos){
-                        console.log(todo.name)
-                        let todoElement = document.createElement('li');
-                        let todoText = document.createTextNode(todo.name);
-
-                        todoElement.appendChild(todoText)
-                        listElement.appendChild(todoElement)
-
-                    }
-
-                })
-                .catch(function (error) {
-                    console.warn('Usuario não encontrado')
-                    alert('usuario não encontrado!')
-
-                });
-
-                inputElement.value = '';
-        };
-
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
