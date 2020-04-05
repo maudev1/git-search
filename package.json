@@ -1,0 +1,17 @@
+{
+  "name": "git-search",
+  "version": "1.0.0",
+  "description": "Uma ferramenta de busca de usuario do gitHub",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mauricio Jr",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "datatables.net-dt": "^1.10.20",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}

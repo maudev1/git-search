@@ -1,55 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Buscar repositorios</title>
 </head>
+
 <body>
     <section class="hero">
         <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Buscar repositorios
-            </h1>
-            <h2 class="subtitle">
-              GitHub
-            </h2>
-          </div>
+            <div class="container">
+                <h1 class="title">
+                    Buscar repositorios
+                </h1>
+                <h2 class="subtitle">
+                    GitHub
+                </h2>
+            </div>
         </div>
-      </section>
+    </section>
     <div class="container">
-    <div id="app" class="columns">
-        <div  class="column is-two-fifths">
-            <label class="label">Informe um usuario do GitHub:</label>
-            <div class="field has-addons">
-               
-                <div class="control">
-                    <input type="text" class="input is-success">                  
+        <div id="app" class="columns">
+            <div class="column is-two-fifths">
+                <label class="label">Informe um usuario do GitHub:</label>
+                <div class="field has-addons">
+
+                    <div class="control">
+                        <input type="text" class="input is-success">
+
+                    </div>
+                    <div class="control">
+                        <a class="button is-success buscar" onclick="searchName()">Buscar</a>
+                        <a class="button is-danger limpar">Limpar</a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="column">
+                <label class="label">Usuarios:</label>
+                <a class="label nav-link" href=""></a>
+                <ul>
                     
-                </div>
-                <div class="control">
-                    <a class="button is-success">Buscar</a>
-                    <a class="button is-danger" onclick="limpar()">Limpar</a>
-                </div>
-                
+                </ul>
             </div>
 
         </div>
-        <div class="column">
-            <label class="label">Repositorios:</label>
-            <ul>
 
-            </ul>
-        </div>
     </div>
-    
-</div>
-    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <script src="./buscar-usuario.js"></script>
+
+
+
+    <script>
+        function createTable(){
+            $(document).ready(function () {
+            $('#table').DataTable();
+        })
+        }
+        
+        
+    </script>
 </body>
 
 </html>
