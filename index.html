@@ -11,65 +11,99 @@
 </head>
 
 <body>
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Buscar repositorios
-                </h1>
-                <h2 class="subtitle">
-                    GitHub
-                </h2>
-            </div>
-        </div>
-    </section>
-    <div class="container">
-        <div id="app" class="columns">
-            <div class="column is-two-fifths">
-                <label class="label">Informe um usuario do GitHub:</label>
-                <div class="field has-addons">
+    <div class="container is-fluid">
+        <section class="hero is-info">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        GitSearch
+                    </h1>
+                    <h2 class="subtitle">
 
-                    <div class="control">
-                        <input type="text" class="input is-success">
+                    </h2>
+                    <div class="nav level">
+                        <div class="nav-left">
 
-                    </div>
-                    <div class="control">
-                        <a class="button is-success buscar" onclick="searchName()">Buscar</a>
-                        <a class="button is-danger limpar">Limpar</a>
+                            <div class="field has-addons">
+
+                                <div class="control">
+                                    <input type="text" placeholder="Digite o nome do usuario github!"
+                                        class="input is-info">
+
+                                </div>
+                                <div class="control">
+                                    <a class="button is-success buscar">Buscar</a>
+                                    <a class="button is-warning limpar">Limpar</a>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
                 </div>
+            </div>
+        </section>
 
+
+        <div id="app" class="columns">
+            <div class="column is-two-fifths">
+                <div class="box">
+                    <label class="label">Usuarios:</label>
+                    <a class="label nav-link" href=""></a>
+                    <article class="media">
+
+                        <div class="media-content">
+                            <div class="content">
+                                <div class="columns">
+                                    <div class="column ">
+
+                                        <ul class="user-names" style="
+                                        list-style-type: none;"">
+                                        </ul>
+                                    </div>
+                                    <div class=" column">
+                                            <ul class="redirect-list" style="
+                                            list-style-type: none;
+                                            ">
+
+
+                                            </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                    </article>
+                </div>
             </div>
             <div class="column">
-                <label class="label">Usuarios:</label>
-                <a class="label nav-link" href=""></a>
-                <ul>
-                    
-                </ul>
+
+                <div class="box">
+                    <label class="label">Repositorios:</label>
+                    <a class="label nav-link" href=""></a>
+                    <article class="media">
+
+                        <div class="media-content">
+                            <div class="content">
+                                <ul class="repositorios" style="
+                                list-style-type: none">
+                                </ul>
+                            </div>
+                    </article>
+                </div>
+
             </div>
+
+
 
         </div>
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src=" https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./buscar-usuario.js"></script>
 
 
-
-    <script>
-        function createTable(){
-            $(document).ready(function () {
-            $('#table').DataTable();
-        })
-        }
-        
-        
-    </script>
 </body>
 
 </html>
