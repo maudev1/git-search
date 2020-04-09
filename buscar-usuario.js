@@ -8,20 +8,27 @@ cleanListButton = document.querySelector('.limpar');
 
 listUserElement = document.querySelector('.user-names');
 
-listRedirectRepo = document.querySelector('.redirect-list') 
+listRedirectRepo = document.querySelector('.redirect-list')
 
 listRepoElement = document.querySelector('.repositorios')
 
 //BUSCA USUARIO NO GITHUB
 buttonSearchElement.onclick = () => {
     buttonSearchElement.setAttribute('class', 'button is-success is-loading');
-    listUserElement.innerHTML = '';
+    //listUserElement.innerHTML = '';
 
     if (inputElement.value == '') {
 
+        let tagAlert = document.querySelector('.tag');
+        tagAlert.setAttribute('class', 'tag is-danger');
         console.log('digite algo');
 
+        setTimeout(() => {
+            tagAlert.setAttribute('class', 'tag is-danger is-hidden');
+        }, 2000);
+
         buttonSearchElement.setAttribute('class', 'button is-success');
+
 
     } else {
         axios.get(`https://api.github.com/search/users?q=${inputElement.value}`)
@@ -63,37 +70,38 @@ let userNames = [
 function gerarLinks() {
     for (userName of userNames) {
 
-        let itemElement, itemLink, itemText, itemRedirectRepo, repoRedirectButton;
+        let itemElement, itemLink, itemText, itemDivider;
 
         itemElement = document.createElement('li');
         itemLink = document.createElement('a');
         itemText = document.createTextNode(userName);
 
-        itemRedirectRepo = document.createElement('li');
-        repoRedirectButton = document.createElement('button');
+        //itemRedirectRepo = document.createElement('li');
 
-        repoRedirectButton.setAttribute('class', 'button is-success is-small');
+        itemLink.setAttribute('onclick', "listarRepositorio('" + userName + "')");
 
-        repoRedirectButton.setAttribute('onclick', "listarRepositorio('"+userName+"')");
+        itemDivider = document.createElement('hr');
 
         itemElement.appendChild(itemLink);
         itemLink.appendChild(itemText);
         listUserElement.appendChild(itemElement);
 
-        listRedirectRepo.appendChild(itemRedirectRepo);
-        itemRedirectRepo.appendChild(repoRedirectButton);
+        itemElement.appendChild(itemDivider);
+
     }
+
 
 }
 
 //LISTAR REPOSITORIOS
 function listarRepositorio(par) {
-    listUserElement.innerHTML = '';
+
     console.log('carregando...');
     axios.get(`https://api.github.com/users/${par}/repos`)
 
         .then(response => {
 
+            listRepoElement.innerHTML = '';
 
             let todos = response.data;
             for (todo of todos) {
@@ -132,6 +140,9 @@ function listarRepositorio(par) {
 //LIMPAR LISTA
 cleanListButton.onclick = () => {
     listUserElement.innerHTML = '';
+
+    listRepoElement.innerHTML = '';
+
     userNames = [];
 
 

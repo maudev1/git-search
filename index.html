@@ -27,13 +27,20 @@
                             <div class="field has-addons">
 
                                 <div class="control">
+
                                     <input type="text" placeholder="Digite o nome do usuario github!"
                                         class="input is-info">
 
+
                                 </div>
                                 <div class="control">
+
                                     <a class="button is-success buscar">Buscar</a>
                                     <a class="button is-warning limpar">Limpar</a>
+                                    <span class="tag is-danger is-hidden">
+                                        Busca invalida!
+                                    </span>
+
                                 </div>
 
                             </div>
@@ -46,11 +53,12 @@
 
 
         <div id="app" class="columns">
+
             <div class="column is-two-fifths">
                 <div class="box">
                     <label class="label">Usuarios:</label>
                     <a class="label nav-link" href=""></a>
-                    <article class="media">
+                    <article class="media ">
 
                         <div class="media-content">
                             <div class="content">
@@ -60,48 +68,43 @@
                                         <ul class="user-names" style="
                                         list-style-type: none;"">
                                         </ul>
-                                    </div>
-                                    <div class=" column">
-                                            <ul class="redirect-list" style="
-                                            list-style-type: none;
-                                            ">
-
-
-                                            </ul>
+                                        
                                     </div>
                                 </div>
 
 
                             </div>
+                        </div>
                     </article>
+                    
                 </div>
             </div>
-            <div class="column">
+            <div class=" column">
 
-                <div class="box">
-                    <label class="label">Repositorios:</label>
-                    <a class="label nav-link" href=""></a>
-                    <article class="media">
+                                            <div class="box">
+                                                <label class="label">Repositorios:</label>
+                                                <a class="label nav-link" href=""></a>
+                                                <article class="media">
 
-                        <div class="media-content">
-                            <div class="content">
-                                <ul class="repositorios" style="
+                                                    <div class="media-content">
+                                                        <div class="content">
+                                                            <ul class="repositorios" style="
                                 list-style-type: none">
-                                </ul>
+                                                            </ul>
+                                                        </div>
+                                                </article>
+                                            </div>
+
+                                    </div>
+
+
+
+                                </div>
+
                             </div>
-                    </article>
-                </div>
 
-            </div>
-
-
-
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./buscar-usuario.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                            <script src="./buscar-usuario.js"></script>
 
 
 </body>
