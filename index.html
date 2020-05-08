@@ -1,56 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <title>Buscar repositorios</title>
 </head>
 
 <body>
-    <div class="container is-fluid">
-        <section class="hero is-info">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        GitSearch
-                    </h1>
-                    <h2 class="subtitle">
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div id="control" class="container">
+                <h1 class="title">
+                    GitSearch
+                </h1>
+                <h2 class="subtitle">
+                    Procure um usuario do Github!
+                </h2>
+                <div class="nav level">
+                    <div class="nav-left">
 
-                    </h2>
-                    <div class="nav level">
-                        <div class="nav-left">
+                        <div class="field has-addons">
 
-                            <div class="field has-addons">
+                            <div class="control">
 
-                                <div class="control">
-
-                                    <input type="text" placeholder="Digite o nome do usuario github!"
-                                        class="input is-info">
-
-
-                                </div>
-                                <div class="control">
-
-                                    <a class="button is-success buscar">Buscar</a>
-                                    <a class="button is-warning limpar">Limpar</a>
-                                    <span class="tag is-danger is-hidden">
-                                        Busca invalida!
-                                    </span>
-
-                                </div>
+                                <input id="input" class="input is-success" is-success" type="text"
+                                    style="border-width: 3px" placeholder="Digite o nome do usuario github!">
 
                             </div>
+                            <div class=" control">
+
+                                <a id="buscar" class="buscar button is-success">Buscar</a>
+                                <a id="limpar" class="button is-warning limpar">Limpar</a>
+                                <span id="alerta!" class="tag is-danger is-hidden is-medium">
+                                </span>
+
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
 
+            </div>
+        </div>
+    </section>
+    <div class="container is-fluid">
 
         <div id="app" class="columns">
 
@@ -65,47 +66,82 @@
                                 <div class="columns">
                                     <div class="column ">
 
-                                        <ul class="user-names" style="
-                                        list-style-type: none;"">
-                                        </ul>
-                                        
-                                    </div>
-                                </div>
 
+                                        <div class="card">
 
-                            </div>
-                        </div>
-                    </article>
-                    
-                </div>
-            </div>
-            <div class=" column">
+                                            <div class="card-content">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <figure class="image is-80x80">
+                                                            
+                                                        </figure>
+                                                    </div>
+                                                    <div id="name" class="media-content">
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <figure class="image is-80x80">
+                                                            
+                                                        </figure>
+                                                    </div>
+                                                    <div id="name" class="media-content">
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
 
-                                            <div class="box">
-                                                <label class="label">Repositorios:</label>
-                                                <a class="label nav-link" href=""></a>
-                                                <article class="media">
-
-                                                    <div class="media-content">
-                                                        <div class="content">
-                                                            <ul class="repositorios" style="
-                                list-style-type: none">
-                                                            </ul>
-                                                        </div>
-                                                </article>
+                                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                                             </div>
-
+                                        </div>
                                     </div>
 
 
+                                    <ul class="user-names" style="list-style-type: none;">
+                                    </ul>
 
                                 </div>
-
                             </div>
 
-                            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                            <script src="./buscar-usuario.js"></script>
 
+                        </div>
+                </div>
+                </article>
+
+            </div>
+        </div>
+        <div class=" column">
+
+            <div class="box">
+                <label class="label">Repositorios:</label>
+                <a class="label nav-link" href=""></a>
+                <article class="media">
+
+                    <div class="media-content">
+                        <div class="content">
+                            <ul class="repositorios" style="
+                                list-style-type: none">
+                            </ul>
+                        </div>
+                </article>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./buscar-usuario.js"></script>
+
+    <style>
+        .image {
+            width: 80px;
+            padding: 0%;
+            margin: auto;
+        }
+    </style>
 
 </body>
 
