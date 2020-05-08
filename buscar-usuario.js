@@ -1,105 +1,117 @@
-let inputElement, buttonSearchElement, cleanListButton, listUserElement, listRepoElement, listRedirectRepo;
+$('document').ready(() => {
+    $('.input').empty();
 
-inputElement = document.querySelector('input');
+})
 
-buttonSearchElement = document.querySelector('.buscar');
+//BUSCA USUARIO NO GIT
+$('.buscar').click(() => {
+    if ($('.input').val() == 0) {
 
-cleanListButton = document.querySelector('.limpar');
-
-listUserElement = document.querySelector('.user-names');
-
-listRedirectRepo = document.querySelector('.redirect-list');
-
-listRepoElement = document.querySelector('.repositorios');
-
-let userAvatar = document.querySelector('.user-avatar')
-
-//BUSCA USUARIO NO GITHUB
-buttonSearchElement.onclick = () => {
-    buttonSearchElement.setAttribute('class', 'button is-success is-loading');
-    //listUserElement.innerHTML = '';
-
-    if (inputElement.value == '') {
-
-        let tagAlert = document.querySelector('.tag');
-        tagAlert.setAttribute('class', 'tag is-danger');
-        console.log('digite algo');
-
+        $('.tag').removeClass('is-hidden')
+        $('.tag').show().text('É preciso informar um username!')
         setTimeout(() => {
-            tagAlert.setAttribute('class', 'tag is-danger is-hidden');
+            $('.tag').fadeOut();
+
         }, 2000);
 
-        buttonSearchElement.setAttribute('class', 'button is-success');
+        $('.buscar').addClass('is-success')
 
-    } else {
+    }
 
-        const buscarPorNome = async () => {
+    else {
+        search()
+
+        async function search() {
+
+            //alert('não deu')
+
             try {
-                const response = await axios.get(`https://api.github.com/search/users?q=${inputElement.value}`);
-                let userList = response.data;
-                let users = userList.items;
+                const inputValue = $('.input').val()
+                const response = await axios.get(`https://api.github.com/search/users?q=${inputValue}`);
 
-                for (user of users) {
+                let data = response.data;
+                let items = data.items;
+                //
+                for (item of items) {
 
-                    userNames.push(user.login)
+                    Users.push({
+                        name: item.login,
+                        avatar: item.avatar_url,
+                        repositories: item.repos_url
+                    });
 
-                    inputElement.value = '';
+                    $('.input').empty('');
 
-                    buttonSearchElement.setAttribute('class', 'button is-success');
-
+                    $('.buscar').addClass('is-success')
+                    console.log(item)
                 }
 
-                gerarLinks();
-
+                linkGenerator()
             }
             catch (err) {
-                buttonSearchElement.setAttribute('class', 'button is-success');
+                //buttonSearchElement.setAttribute('class', 'button is-success');
                 console.warn('error')
 
             }
 
         }
-        buscarPorNome();
     }
+})
 
-    inputElement.value = '';
 
-}
+$('.input').val()
 
-let userNames = [
 
-]
+let Users = [];
 
 //GERADOR DE LINKS 
-function gerarLinks() {
-    for (userName of userNames) {
+function linkGenerator() {
+    for (user of Users) {
 
-        let itemElement, itemLink, itemText, itemDivider, avatar;
+        //const name = $('<p></p>').text(user.name);
+        const avatar = $(`<img src=${user.avatar}/>`).addClass('avatar');
 
-        itemElement = document.createElement('li');
-        itemLink = document.createElement('a');
-        itemText = document.createTextNode(userName);
+       //$('#name').append(name).addClass('title is-4');
+       //$('.image').append(avatar);
 
-        //avatar = document.createTextNode(userName);
+        console.log(Users)
+        //createCard()
 
-        //itemRedirectRepo = document.createElement('li');
+        var data = {
+            userName: user.name,
+            avatar: user.avatar,
+            respositories:user.repositories
+        }
+    
+        var template = [
+            '<div class="card">',
+            ' <div class="card-content">',
+            '<div class="media">',
+            ' <div class="media-left">',
+            '<figure class="image">',
+                '<img src="{{ avatar }}">',
+            '</figure>',
+            '</div>',
+            '<div class="media-content">',
+            '<p class="title is-4">{{ userName }}</p>',
+            ' <p class="subtitle is-6"></p>',
+            '</div>',
+            '</div>',
+            '</div>',
+            '</div>'
+        ].join("")
+    
+        var card = Mustache.render(template, data);
+        
+        $('#users-list').append(card);
 
-        itemLink.setAttribute('onclick', "listarRepositorios('" + userName + "')");
 
-        itemDivider = document.createElement('hr');
-
-        itemElement.appendChild(itemLink);
-
-        //itemElement.appendChild(avatar)
-        itemLink.appendChild(itemText);
-        listUserElement.appendChild(itemElement);
-
-        itemElement.appendChild(itemDivider);
 
 
     }
 
 }
+
 
 //LISTAR REPOSITORIOS
 
@@ -133,17 +145,10 @@ const listarRepositorios = async (par) => {
     catch (err) {
         console.warn('erro ao buscar o repositorio!');
     }
-    inputElement.value = '';
+    // inputElement.value = '';
+    $('.input').val;
+
 }
 
 //LIMPAR LISTA
-cleanListButton.onclick = () => {
-    listUserElement.innerHTML = '';
-
-    listRepoElement.innerHTML = '';
-
-    userNames = [];
-
-
-}
 

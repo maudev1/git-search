@@ -1,111 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <title>Buscar repositorios</title>
 </head>
 
 <body>
-    <div class="container is-fluid">
-        <section class="hero is-info">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        GitSearch
-                    </h1>
-                    <h2 class="subtitle">
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div id="control" class="container">
+                <h1 class="title">
+                    GitSearch
+                </h1>
+                <h2 class="subtitle">
+                    Procure um usuario do Github!
+                </h2>
+                <div class="nav level">
+                    <div class="nav-left">
 
-                    </h2>
-                    <div class="nav level">
-                        <div class="nav-left">
+                        <div class="field has-addons">
 
-                            <div class="field has-addons">
+                            <div class="control">
 
-                                <div class="control">
-
-                                    <input type="text" placeholder="Digite o nome do usuario github!"
-                                        class="input is-info">
-
-
-                                </div>
-                                <div class="control">
-
-                                    <a class="button is-success buscar">Buscar</a>
-                                    <a class="button is-warning limpar">Limpar</a>
-                                    <span class="tag is-danger is-hidden">
-                                        Busca invalida!
-                                    </span>
-
-                                </div>
+                                <input id="input" class="input is-success" is-success" type="text"
+                                    style="border-width: 3px" placeholder="Digite o nome do usuario github!">
 
                             </div>
+                            <div class=" control">
+
+                                <a id="buscar" class="buscar button is-success">Buscar</a>
+                                <a id="limpar" class="button is-warning limpar">Limpar</a>
+                                <span id="alerta!" class="tag is-danger is-hidden is-medium">
+                                </span>
+
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
 
+            </div>
+        </div>
+    </section>
+    <div class="container is-fluid">
 
         <div id="app" class="columns">
 
             <div class="column is-two-fifths">
-                <div class="box">
-                    <label class="label">Usuarios:</label>
-                    <a class="label nav-link" href=""></a>
-                    <article class="media ">
+               <table>
+                   <thead>
+                       <tr>
+                        <th>
+                            
 
-                        <div class="media-content">
-                            <div class="content">
-                                <div class="columns">
-                                    <div class="column ">
 
-                                        <ul class="user-names" style="
-                                        list-style-type: none;"">
-                                        </ul>
+                        </th>
+        
+                       </tr>
+                   </thead>
+                
+                   <tbody>
+                    <tr id="users-list">
+                        <!--
+                            <div class="card">
+                                <div class="card-content">
+                                  <div class="media">
+                                    <div class="media-left">
+                                      <figure class="image is-48x48">
                                         
+                                      </figure>
                                     </div>
+                                    <div class="media-content">
+                                      <p class="title is-4">John Smith</p>
+                                      <p class="subtitle is-6">@johnsmith</p>
+                                    </div>
+                                  </div>
+
                                 </div>
+                              </div>
+
+                            -->
+                        
+        
+                       </tr>
+                   </tbody>
 
 
-                            </div>
-                        </div>
-                    </article>
-                    
-                </div>
+               </table>
             </div>
-            <div class=" column">
+            <div class="column">
+                teste
+            </div>
+        
+        </div>
+        
+    </div>
+    
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./buscar-usuario.js"></script>
 
-                                            <div class="box">
-                                                <label class="label">Repositorios:</label>
-                                                <a class="label nav-link" href=""></a>
-                                                <article class="media">
-
-                                                    <div class="media-content">
-                                                        <div class="content">
-                                                            <ul class="repositorios" style="
-                                list-style-type: none">
-                                                            </ul>
-                                                        </div>
-                                                </article>
-                                            </div>
-
-                                    </div>
-
-
-
-                                </div>
-
-                            </div>
-
-                            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                            <script src="./buscar-usuario.js"></script>
-
+    <style>
+        .image {
+            width: 80px;
+            padding: 0%;
+            margin: auto;
+        }
+    </style>
 
 </body>
 
