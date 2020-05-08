@@ -45,6 +45,7 @@ $('.buscar').click(() => {
                     $('.buscar').addClass('is-success')
                     console.log(item)
                 }
+                
 
                 linkGenerator()
             }
@@ -53,6 +54,7 @@ $('.buscar').click(() => {
                 console.warn('error')
 
             }
+
 
         }
     }
