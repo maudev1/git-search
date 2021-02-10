@@ -11,47 +11,45 @@
 </head>
 
 <body>
-    <div class="container is-fluid">
-        <section class="hero is-info">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        GitSearch
-                    </h1>
-                    <h2 class="subtitle">
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    GitSearch
+                </h1>
+                <h2 class="subtitle">
 
-                    </h2>
-                    <div class="nav level">
-                        <div class="nav-left">
+                </h2>
+                <div class="nav level">
+                    <div class="nav-left">
 
-                            <div class="field has-addons">
+                        <div class="field has-addons">
 
-                                <div class="control">
+                            <div class="control">
 
-                                    <input type="text" placeholder="Digite o nome do usuario github!"
-                                        class="input is-info">
+                                <input type="text" placeholder="Digite o nome do usuario github!" class="input is-info">
 
-
-                                </div>
-                                <div class="control">
-
-                                    <a class="button is-success buscar">Buscar</a>
-                                    <a class="button is-warning limpar">Limpar</a>
-                                    <span class="tag is-danger is-hidden">
-                                        Busca invalida!
-                                    </span>
-
-                                </div>
 
                             </div>
+                            <div class="control">
+
+                                <a class="button is-success buscar">Buscar</a>
+                                <a class="button is-warning limpar">Limpar</a>
+                                <span class="tag is-danger is-hidden">
+                                    Busca invalida!
+                                </span>
+
+                            </div>
+
                         </div>
                     </div>
-
                 </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-
+    <div class="container is-fluid">
         <div id="app" class="columns">
 
             <div class="column is-two-fifths">
@@ -79,32 +77,26 @@
                     
                 </div>
             </div>
+
             <div class=" column">
-
-                                            <div class="box">
-                                                <label class="label">Repositorios:</label>
-                                                <a class="label nav-link" href=""></a>
-                                                <article class="media">
-
-                                                    <div class="media-content">
-                                                        <div class="content">
-                                                            <ul class="repositorios" style="
-                                list-style-type: none">
-                                                            </ul>
-                                                        </div>
-                                                </article>
-                                            </div>
-
-                                    </div>
-
-
-
-                                </div>
-
+                <div class="box">
+                    <label class="label">Repositorios:</label>
+                        <a class="label nav-link" href=""></a>
+                        <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <ul class="repositorios" style="list-style-type: none"></ul>
                             </div>
+                        </div>
+                        </article>
+                </div>
 
-                            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-                            <script src="./buscar-usuario.js"></script>
+            </div>
+
+         </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./buscar-usuario.js"></script>
 
 
 </body>
