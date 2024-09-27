@@ -1,4 +1,4 @@
 # GitSearch
-Uma ferramenta para buscar e listar repositorios do github
+Um programa que busca usuários e repositórios do github.
 <hr>
 Demo: https://maudev1.github.io/git-search
